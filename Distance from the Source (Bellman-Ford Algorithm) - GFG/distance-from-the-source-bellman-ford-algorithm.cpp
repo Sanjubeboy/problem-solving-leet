@@ -21,7 +21,7 @@ class Solution {
         for(int i=0;i<V-1;i++)
         {
             for(auto it:edges)
-            {
+            {                                                            //relaxing edges n-1 times
                 int u=it[0];
                 int v=it[1];
                 int wt=it[2];
@@ -36,7 +36,7 @@ class Solution {
         
         for(auto it:edges)
         {
-            int u=it[0];
+            int u=it[0];                                                //checking for negative cycle by relaxing n-1 th time
             int v=it[1];
             int wt=it[2];
             
