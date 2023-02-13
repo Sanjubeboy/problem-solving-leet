@@ -24,7 +24,7 @@ public:
         }
     }
     
-    int findpair(int node)
+    int findpair(int node)                                             //disjoint set datastructure
     {
         if(parent[node] == node)
             return node;
