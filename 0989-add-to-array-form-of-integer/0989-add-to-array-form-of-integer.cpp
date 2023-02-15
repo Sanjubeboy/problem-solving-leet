@@ -1,26 +1,48 @@
 class Solution {
 public:
-    vector<int> addToArrayForm(vector<int>& arr, int k) {
-        vector<int>ans;
-        vector<int>v;
-        while(k>0){
-            v.push_back(k%10);
+    vector<int> addToArrayForm(vector<int>& num, int k) {
+        
+        
+        vector<int> ret;
+        vector<int> temp;
+        
+        while(k>0)
+        {
+            temp.push_back(k%10);
             k/=10;
         }
-        reverse(begin(v),end(v));
-        int n=arr.size();
+        
+        reverse(begin(temp), end(temp));
+        
+        int u=num.size()-1;
+        int v=temp.size()-1;
         int carry=0;
-        int i=n-1,j=v.size()-1;
-        while(i>=0 or j>=0){
+        
+        while(u>=0 or v>=0)
+        {
             int sum=carry;
-          if(i>=0)sum+=arr[i--];
-          if(j>=0)sum+=v[j--];
-          carry=sum/10;
-          ans.push_back(sum%10);
+            
+            if(u>=0)
+            {
+                sum += num[u];
+                u--;
+            }
+            if(v>=0)
+            {
+                sum+=temp[v];
+                v--;
+            }
+            
+            ret.push_back(sum%10);
+            carry=sum/10;
         }
+        
         if(carry)
-        ans.push_back(carry);
-         reverse(begin(ans),end(ans));
-        return ans;
+        {
+            ret.push_back(carry);
+        }
+        reverse(begin(ret), end(ret));
+        return ret;
+        
     }
 };
