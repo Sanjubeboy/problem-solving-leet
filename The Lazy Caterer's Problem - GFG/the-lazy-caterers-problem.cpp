@@ -10,17 +10,22 @@ class Solution{
    	    
    	    //2  4 7 11
    	    
-   	    if(n==1)
-   	        return 2;
-   	    int i = 2,ans = 2;
-   	    n--;
+   	    // if(n==1)
+   	    //     return 2;
+   	    // int i = 2,ans = 2;
+   	    // n--;                    //O(n) approach
    	    
-   	    while(n--)
-   	    {
-   	        ans = ans + i;
-   	        i++;
-   	    }
+   	    // while(n--)
+   	    // {
+   	    //     ans = ans + i;
+   	    //     i++;
+   	    // }
    	    
+   	    // return ans;
+   	    
+   	    
+   	    
+   	    int ans = (2+ (n*n) +n)/2;
    	    return ans;
    	    
    	}    
