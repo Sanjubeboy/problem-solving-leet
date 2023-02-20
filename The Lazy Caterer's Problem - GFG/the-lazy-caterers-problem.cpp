@@ -25,7 +25,7 @@ class Solution{
    	    
    	    
    	    
-   	    int ans = (2+ (n*n) +n)/2;
+   	    int ans = (2+ (n*n) +n)/2;      //O(1) approach
    	    return ans;
    	    
    	}    
