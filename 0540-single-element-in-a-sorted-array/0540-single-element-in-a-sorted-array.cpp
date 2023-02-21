@@ -3,7 +3,7 @@ public:
     int singleNonDuplicate(vector<int>& nums) {
         
         int low = 0, high = nums.size()-2;
-        
+        int ans;
         while(low<=high)
         {
             int mid = (low + high)/2;
@@ -14,6 +14,7 @@ public:
             }
             else
             {
+                // ans = nums[mid];
                 high = mid - 1;
             }
             
