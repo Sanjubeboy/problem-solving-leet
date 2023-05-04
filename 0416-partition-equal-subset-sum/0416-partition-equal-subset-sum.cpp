@@ -37,6 +37,32 @@ public:
         
         vector<vector<int>> dp(n+1, vector<int> (target+1, -1));
         
-        return helper(n-1, target, nums, dp);
+        // return helper(n-1, target, nums, dp);
+        
+        
+        //tabulation
+        
+        
+        for(int tar=0; tar<=target; tar++)
+        {
+            dp[0][tar] = (nums[0] == tar);
+        }
+        
+        
+        for(int ind = 1; ind<n; ind++)
+        {
+            for(int tar=0; tar<=target; tar++)
+            {
+                bool take = false;
+                if(nums[ind] <= tar)
+                    take = dp[ind-1][tar-nums[ind]];
+                
+                bool ntake = dp[ind-1][tar];
+                
+                dp[ind][tar] = take or ntake;
+            }
+        }
+        
+        return dp[n-1][target];
     }
 };
