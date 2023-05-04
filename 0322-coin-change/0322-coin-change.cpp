@@ -6,9 +6,10 @@ public:
         
         if(ind == 0)
         {
-            if(tar == 0)
-                return 0;
-            if(coins[ind] <= tar and tar%coins[ind] == 0)
+            // if(tar == 0)
+            //     return 0;
+            
+            if( tar%coins[ind] == 0)
                 return tar/coins[0];
             
             return 1e9;
