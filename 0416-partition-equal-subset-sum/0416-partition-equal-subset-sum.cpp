@@ -35,17 +35,19 @@ public:
         
         int target = sum/2;
         
-        vector<vector<int>> dp(n+1, vector<int> (target+1, -1));
+        // vector<vector<int>> dp(n+1, vector<int> (target+1, -1));
         
         // return helper(n-1, target, nums, dp);
         
         
         //tabulation
         
+        vector<int> dp(target+1, 0), cur(target+1, 0);
+        
         
         for(int tar=0; tar<=target; tar++)
         {
-            dp[0][tar] = (nums[0] == tar);
+            dp[tar] = (nums[0] == tar);
         }
         
         
@@ -55,14 +57,15 @@ public:
             {
                 bool take = false;
                 if(nums[ind] <= tar)
-                    take = dp[ind-1][tar-nums[ind]];
+                    take = dp[tar-nums[ind]];
                 
-                bool ntake = dp[ind-1][tar];
+                bool ntake = dp[tar];
                 
-                dp[ind][tar] = take or ntake;
+                cur[tar] = take or ntake;
             }
+            dp = cur;
         }
         
-        return dp[n-1][target];
+        return dp[target];
     }
 };
