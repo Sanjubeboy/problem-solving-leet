@@ -14,16 +14,18 @@ class Solution
         
         vector<int> dist(V, 1e9);
         
-        priority_queue<pair<int,int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+        // priority_queue<pair<int,int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+        
+        set<pair<int, int>> st;
         
         dist[S] = 0;
         
-        pq.push({0,S});
+        st.insert({0,S});
         
-        while(!pq.empty())
+        while(!st.empty())
         {
-            auto t = pq.top();
-            pq.pop();
+            auto t = *(st.begin());
+            st.erase(t);
             
             int dis = t.first;
             int node = t.second;
@@ -36,8 +38,14 @@ class Solution
                 
                 if(dis + edgeWt < dist[adjNode])
                 {
+                    
+                    if(dist[adjNode] != 1e9)
+                    {
+                        st.erase({dist[adjNode], adjNode});
+                    }
+                    
                     dist[adjNode] = dis + edgeWt;
-                    pq.push({dist[adjNode], adjNode});
+                    st.insert({dist[adjNode], adjNode});
                 }
             }
             
